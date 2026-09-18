@@ -28,6 +28,4 @@ O CogniPlan é um projeto em desenvolvimento com o objetivo de ajudar na organiz
 
 ## Objetivo
 
-## Objetivo
-
 Este projeto está sendo desenvolvido exclusivamente para fins de estudo e aprendizado em programação na linguagem C.
