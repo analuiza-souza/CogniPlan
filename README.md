@@ -11,7 +11,7 @@ O CogniPlan é um projeto em desenvolvimento com o objetivo de ajudar na organiz
 - [x] Cadastrar matérias
 - [x] Listar matérias
 - [x] Cadastrar tarefas
-- [ ] Listar tarefas
+- [x] Listar tarefas
 - [ ] Editar tarefas
 - [ ] Excluir tarefas
 - [ ] Adicionar prazos
