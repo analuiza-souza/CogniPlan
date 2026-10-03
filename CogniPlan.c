@@ -21,58 +21,121 @@ int main() {
         printf("2 - Listar materias\n");
         printf("3 - Cadastrar tarefas\n");
         printf("4 - Listar tarefas\n");
+        printf("5 - Editar tarefas\n");
         printf("0 - Sair\n");
         printf("Escolha: ");
         scanf("%d", &opcao);
 
-    switch (opcao) {
-        case 1:
-            printf("Digite o nome da materia: ");
-                scanf(" %[^\n]", materias[quantidadeMaterias]); quantidadeMaterias++;
-            printf("\nMateria cadastrada!\n\n");
-        break;
+        switch (opcao) {
 
-        case 2:
-            printf("\n\n###### MATERIAS ######\n");
-                for(int i = 0; i < quantidadeMaterias; i++) {
-            printf("%d.%s\n", i + 1, materias[i]); 
-    }
-        break;
+            case 1:
+                if (quantidadeMaterias >= 50) {
+                    printf("\nLimite de materias atingido!\n");
+                    break;
+                }
 
-        case 3:
-            printf("Digite a tarefa: ");
+                printf("Digite o nome da materia: ");
+                scanf(" %[^\n]", materias[quantidadeMaterias]);
+                quantidadeMaterias++;
+
+                printf("\nMateria cadastrada!\n\n");
+            break;
+
+
+            case 2:
+                printf("\n\n###### MATERIAS ######\n");
+
+                for (int i = 0; i < quantidadeMaterias; i++) {
+                    printf("%d.%s\n", i + 1, materias[i]);
+                }
+            break;
+
+
+            case 3:
+                if (quantidadesTarefas >= 50) {
+                    printf("\nLimite de tarefas atingido!\n");
+                    break;
+                }
+
+                printf("Digite a tarefa: ");
                 scanf(" %[^\n]", tarefas[quantidadesTarefas]);
 
-            printf("Digite a materia: ");
-                scanf(" %[^\n]", tarefasMaterias[quantidadesTarefas]); quantidadesTarefas++;
-            printf("Tarefa cadastrada!\n");
-        break;
+                printf("Digite a materia: ");
+                scanf(" %[^\n]", tarefasMaterias[quantidadesTarefas]);
 
-        case 4: 
-            printf("\n\n###### TAREFAS ######\n");
+                quantidadesTarefas++;
 
-            for(int i = 0; i < quantidadesTarefas; i++) {
-                printf("%d.%s.[%s]\n", i + 1, tarefas[i], tarefasMaterias[i]);
-        } 
-        break;
-        
-        case 0:
-            printf("\nSaindo...\n");   
-        break;
+                printf("Tarefa cadastrada!\n");
+            break;
 
 
-        default:
-            printf("Opcao invalida!\n\n");
+            case 4:
+                printf("\n\n###### TAREFAS ######\n");
 
-    
+                for (int i = 0; i < quantidadesTarefas; i++) {
+                    printf("%d.%s.[%s]\n",
+                           i + 1,
+                           tarefas[i],
+                           tarefasMaterias[i]);
+                }
+            break;
+
+
+            case 5: {
+                int tarefaEditar;
+
+                if (quantidadesTarefas == 0) {
+                    printf("\nNao existem tarefas cadastradas!\n");
+                    break;
+                }
+
+                printf("\n\n###### TAREFAS ######\n");
+
+                for (int i = 0; i < quantidadesTarefas; i++) {
+                    printf("%d.%s.[%s]\n",
+                           i + 1,
+                           tarefas[i],
+                           tarefasMaterias[i]);
+                }
+
+                printf("\nDigite o numero da tarefa que deseja editar: ");
+                scanf("%d", &tarefaEditar);
+
+                if (tarefaEditar < 1 || tarefaEditar > quantidadesTarefas) {
+                    printf("\nTarefa invalida!\n");
+                    break;
+                }
+
+                tarefaEditar--;
+
+                printf("\nDigite o novo nome da tarefa: ");
+                scanf(" %[^\n]", tarefas[tarefaEditar]);
+
+                printf("Digite a nova materia: ");
+                scanf(" %[^\n]", tarefasMaterias[tarefaEditar]);
+
+                printf("\nTarefa editada com sucesso!\n");
+            }
+            break;
+
+
+            case 0:
+                printf("\nSaindo...\n");
+            break;
+
+
+            default:
+                printf("Opcao invalida!\n\n");
         }
+
+
         if (opcao != 0) {
             printf("\nPressione Enter Se Quiser Continuar.");
             limparBuffer();
-            getchar(); 
-    }
-    } while (opcao != 0);
+            getchar();
+        }
 
+    } while (opcao != 0);
 
 
     return 0;
