@@ -7,10 +7,11 @@ typedef struct {
     char nome[50];
     char materia[50];
     char prazo[20];
-    char prioridade[20];  // ADICIONADO
+    char prioridade[20]; 
 } Tarefa;
 
 
+/* Limpa o buffer de entrada */
 void limparBuffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
@@ -41,7 +42,7 @@ int main() {
         printf("5 - Editar tarefas\n");
         printf("6 - Excluir tarefas\n");
         printf("7 - Adicionar prazos\n");
-        printf("8 - Adicionar prioridades\n"); // ADICIONADO
+        printf("8 - Adicionar prioridades\n"); 
         printf("0 - Sair\n");
 
         printf("Escolha: ");
@@ -50,6 +51,7 @@ int main() {
 
         switch (opcao) {
 
+            /* Cadastro de materias */
             case 1:
 
                 if (quantidadeMaterias >= MAX) {
@@ -67,6 +69,7 @@ int main() {
             break;
 
 
+            /* Listagem de materias */
             case 2:
 
                 printf("\n\n###### MATERIAS ######\n");
@@ -82,6 +85,7 @@ int main() {
             break;
 
 
+            /* Cadastro de tarefas */
             case 3:
 
                 if (quantidadeTarefas >= MAX) {
@@ -95,13 +99,12 @@ int main() {
                 printf("Digite a materia: ");
                 scanf(" %[^\n]", tarefas[quantidadeTarefas].materia);
 
-                /* Prazo inicial */
+                /* Define os valores iniciais */
                 sprintf(
                     tarefas[quantidadeTarefas].prazo,
                     "Nao definido"
                 );
 
-                /* Prioridade inicial */
                 sprintf(
                     tarefas[quantidadeTarefas].prioridade,
                     "Nao definida"
@@ -114,6 +117,7 @@ int main() {
             break;
 
 
+            /* Listagem de tarefas */
             case 4:
 
                 printf("\n\n###### TAREFAS ######\n");
@@ -137,6 +141,7 @@ int main() {
             break;
 
 
+            /* Edicao de tarefas */
             case 5: {
 
                 int tarefaEditar;
@@ -183,6 +188,7 @@ int main() {
             break;
 
 
+            /* Exclusao de tarefas */
             case 6: {
 
                 int tarefaExcluir;
@@ -216,10 +222,7 @@ int main() {
 
                 tarefaExcluir--;
 
-                /*
-                    Move as tarefas seguintes uma posição para trás.
-                */
-
+                /* Move as tarefas seguintes uma posicao para tras */
                 for (int i = tarefaExcluir; i < quantidadeTarefas - 1; i++) {
                     tarefas[i] = tarefas[i + 1];
                 }
@@ -233,6 +236,7 @@ int main() {
             break;
 
 
+            /* Adicao de prazos */
             case 7: {
 
                 int tarefaPrazo;
@@ -279,10 +283,7 @@ int main() {
             break;
 
 
-            /* ==================================================
-               ADICIONADO - PRIORIDADES
-               ================================================== */
-
+            /* Definicao de prioridades */
             case 8: {
 
                 int tarefaPrioridade;
