@@ -15,7 +15,7 @@ O CogniPlan é um projeto em desenvolvimento com o objetivo de ajudar na organiz
 - [x] Editar tarefas
 - [x] Excluir tarefas
 - [x] Adicionar prazos
-- [ ] Adicionar prioridades
+- [x] Adicionar prioridades
 
 ## Tecnologias
 
