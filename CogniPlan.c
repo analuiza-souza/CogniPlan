@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #define MAX 50
 
@@ -6,6 +7,7 @@ typedef struct {
     char nome[50];
     char materia[50];
     char prazo[20];
+    char prioridade[20];  // ADICIONADO
 } Tarefa;
 
 
@@ -39,6 +41,7 @@ int main() {
         printf("5 - Editar tarefas\n");
         printf("6 - Excluir tarefas\n");
         printf("7 - Adicionar prazos\n");
+        printf("8 - Adicionar prioridades\n"); // ADICIONADO
         printf("0 - Sair\n");
 
         printf("Escolha: ");
@@ -98,6 +101,12 @@ int main() {
                     "Nao definido"
                 );
 
+                /* Prioridade inicial */
+                sprintf(
+                    tarefas[quantidadeTarefas].prioridade,
+                    "Nao definida"
+                );
+
                 quantidadeTarefas++;
 
                 printf("Tarefa cadastrada!\n");
@@ -116,11 +125,12 @@ int main() {
                 for (int i = 0; i < quantidadeTarefas; i++) {
 
                     printf(
-                        "%d. %s [%s] - Prazo: %s\n",
+                        "%d. %s [%s] - Prazo: %s - Prioridade: %s\n",
                         i + 1,
                         tarefas[i].nome,
                         tarefas[i].materia,
-                        tarefas[i].prazo
+                        tarefas[i].prazo,
+                        tarefas[i].prioridade
                     );
                 }
 
@@ -141,11 +151,12 @@ int main() {
                 for (int i = 0; i < quantidadeTarefas; i++) {
 
                     printf(
-                        "%d. %s [%s] - Prazo: %s\n",
+                        "%d. %s [%s] - Prazo: %s - Prioridade: %s\n",
                         i + 1,
                         tarefas[i].nome,
                         tarefas[i].materia,
-                        tarefas[i].prazo
+                        tarefas[i].prazo,
+                        tarefas[i].prioridade
                     );
                 }
 
@@ -186,11 +197,12 @@ int main() {
                 for (int i = 0; i < quantidadeTarefas; i++) {
 
                     printf(
-                        "%d. %s [%s] - Prazo: %s\n",
+                        "%d. %s [%s] - Prazo: %s - Prioridade: %s\n",
                         i + 1,
                         tarefas[i].nome,
                         tarefas[i].materia,
-                        tarefas[i].prazo
+                        tarefas[i].prazo,
+                        tarefas[i].prioridade
                     );
                 }
 
@@ -235,11 +247,12 @@ int main() {
                 for (int i = 0; i < quantidadeTarefas; i++) {
 
                     printf(
-                        "%d. %s [%s] - Prazo: %s\n",
+                        "%d. %s [%s] - Prazo: %s - Prioridade: %s\n",
                         i + 1,
                         tarefas[i].nome,
                         tarefas[i].materia,
-                        tarefas[i].prazo
+                        tarefas[i].prazo,
+                        tarefas[i].prioridade
                     );
                 }
 
@@ -260,6 +273,90 @@ int main() {
                 scanf(" %[^\n]", tarefas[tarefaPrazo].prazo);
 
                 printf("\nPrazo adicionado com sucesso!\n");
+
+            }
+
+            break;
+
+
+            /* ==================================================
+               ADICIONADO - PRIORIDADES
+               ================================================== */
+
+            case 8: {
+
+                int tarefaPrioridade;
+                int prioridadeEscolhida;
+
+                if (quantidadeTarefas == 0) {
+                    printf("\nNao existem tarefas cadastradas!\n");
+                    break;
+                }
+
+                printf("\n\n###### TAREFAS ######\n");
+
+                for (int i = 0; i < quantidadeTarefas; i++) {
+
+                    printf(
+                        "%d. %s [%s] - Prazo: %s - Prioridade: %s\n",
+                        i + 1,
+                        tarefas[i].nome,
+                        tarefas[i].materia,
+                        tarefas[i].prazo,
+                        tarefas[i].prioridade
+                    );
+                }
+
+                printf(
+                    "\nDigite o numero da tarefa que deseja definir a prioridade: "
+                );
+
+                scanf("%d", &tarefaPrioridade);
+
+                if (tarefaPrioridade < 1 || tarefaPrioridade > quantidadeTarefas) {
+                    printf("\nTarefa invalida!\n");
+                    break;
+                }
+
+                tarefaPrioridade--;
+
+                printf("\n###### PRIORIDADE ######\n");
+                printf("1 - Baixa\n");
+                printf("2 - Media\n");
+                printf("3 - Alta\n");
+
+                printf("\nEscolha a prioridade: ");
+                scanf("%d", &prioridadeEscolhida);
+
+                switch (prioridadeEscolhida) {
+
+                    case 1:
+                        sprintf(
+                            tarefas[tarefaPrioridade].prioridade,
+                            "Baixa"
+                        );
+                        printf("\nPrioridade definida como BAIXA!\n");
+                    break;
+
+                    case 2:
+                        sprintf(
+                            tarefas[tarefaPrioridade].prioridade,
+                            "Media"
+                        );
+                        printf("\nPrioridade definida como MEDIA!\n");
+                    break;
+
+                    case 3:
+                        sprintf(
+                            tarefas[tarefaPrioridade].prioridade,
+                            "Alta"
+                        );
+                        printf("\nPrioridade definida como ALTA!\n");
+                    break;
+
+                    default:
+                        printf("\nPrioridade invalida!\n");
+                }
 
             }
 
